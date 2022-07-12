@@ -1,0 +1,20 @@
+<h1>Home</h1>
+
+<% if current_user %>
+  <p>Hello <%= current_user.email %>!</p>
+  <p>Have a great day <%= current_user.name %>!</p>
+  <p>You are a <%= current_user.role %></p>
+  <p>You're username: <%= current_user.username %></p>
+  <p>The domain is: <%= current_user.domain %></p>
+  <p>Successfully authenticated with your Devise account</p>
+  <p>There are <%= User.count %> users in database</p>
+  <a class="btn btn-primary" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
+
+<% else %>
+  <p>You are not logged in.</p>
+  <br/>
+  <div>
+    <a class="btn btn-primary" <%= link_to "Register", new_user_registration_path %></a>
+    <a class="btn btn-primary" <%= link_to "Login", new_user_session_path%></a>
+  </div>
+<% end %>
