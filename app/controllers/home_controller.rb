@@ -3,6 +3,11 @@ class HomeController < ApplicationController
   end
 
   def show
-    @user = User.where(name: request.subdomain)
+    @user = User.find_by_domain!(request.subdomain)
+    @users = User.all
+  end
+
+  def new_user
+
   end
 end
