@@ -1,4 +1,4 @@
-<a class="btn btn-primary btn-lg" <%= link_to 'Create user', new_user_path %></a>
+<a class="btn btn-primary btn-lg" <%= link_to 'Create users', new_users_admin_path %></a>
 <p></p>
 
 <div>
@@ -14,7 +14,8 @@
     </tr>
     </thead>
     <tbody>
-    <% @users.each do |u| %>
+    <% @user.each do |u| %>
+      <% if u.domain == current_user.domain %>
       <tr>
         <th><%= u.id %></th>
         <td><%= u.name %></td>
@@ -23,6 +24,7 @@
         <td><%= u.domain %></td>
         <td><%= u.role %></td>
       </tr>
+      <% end %>
     <% end %>
     </tbody>
   </table>

@@ -1,7 +1,6 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for @user, url: users_admin_index_path(@user), method: :post, local: true do |f| %>
 
   <div class="field form-group">
     <% f.label :username %><br />
@@ -34,29 +33,15 @@
   <br/>
 
   <div style="display: none;">
-  <%= f.text_field :domain, :value => current_user.domain %>
+  <%= f.text_field :domain, value: current_user.domain %>
   </div>
 
   <div class="field form-group">
-    <input class="form-check-input" type="checkbox" value="" id="student">
-    <label class="form-check-label" for="student">
-      Student
-    </label>
-  </div>
-  <p></p>
-
-  <div class="field form-group">
-    <input class="form-check-input" type="checkbox" value="" id="professor">
-    <label class="form-check-label" for="professor">
-      Professor
-    </label>
+    <%= f.select :role, options_for_select(["student", "teacher"]), {}, { class:"form-control"} %>
   </div>
   <p></p>
 
   <div class="actions">
-    <%= f.submit "Create User", class: "btn btn-secondary" %>
+    <%= f.submit 'Create User', class: "btn btn-secondary", data: {turbo: false} %>
   </div>
 <% end %>
-
-<p></p>
-<%#= render "devise/shared/links" %>
