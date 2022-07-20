@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  belongs_to :school
+
   enum role: [:student, :teacher, :admin]
   after_initialize :set_default_role, :if => :new_record?
   def set_default_role

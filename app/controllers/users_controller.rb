@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @schools = School.all
     @user = User.new
   end
 
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :name, :email, :password, :current_password, :domain, :role)
+    params.require(:user).permit(:username, :name, :email, :password, :current_password, :domain, :role, :id_school)
   end
 
 

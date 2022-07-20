@@ -1,0 +1,17 @@
+<%= form_for @school, method: :post, local: true do |form| %>
+
+  <div class="field form-group">
+    <% form.label :name %><br />
+    <%= form.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", placeholder:"Name" %>
+  </div>
+
+  <p></p>
+  <div style="display: none;">
+    <%= form.text_field :domain, value: current_user.domain %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Save School', class:'btn btn-secondary', data: {turbo: false} %>
+  </div>
+
+<% end %>

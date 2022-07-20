@@ -36,6 +36,15 @@
   <%= f.text_field :domain, value: current_user.domain %>
   </div>
 
+  <div style="display: none;">
+    <% @schools.each do |s| %>
+      <% if s.domain = current_user.domain %>
+        <%= f.text_field :id_school, value: s.id %>
+      <% end %>
+    <% end %>
+
+  </div>
+
   <div class="field form-group">
     <%= f.select :role, options_for_select(["student", "teacher"]), {}, { class:"form-control"} %>
   </div>
