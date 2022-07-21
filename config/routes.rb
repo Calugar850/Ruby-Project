@@ -9,13 +9,11 @@ Rails.application.routes.draw do
   constraints subdomain: 'utcn' do
     resources :users_admin, :controller => 'users'
     get '/dashboard', to: 'users#index'
-    #get '/school', to: 'schools#new'
   end
 
   constraints subdomain: 'ubb' do
     resources :users_admin, :controller => 'users'
     get '/dashboard', to: 'users#index'
-    #get '/school', to: 'schools#new'
   end
 
 end

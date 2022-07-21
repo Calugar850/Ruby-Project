@@ -7,11 +7,18 @@
   <p>You're username: <%= current_user.username %></p>
   <p>The domain is: <%= current_user.domain %></p>
   <p>Successfully authenticated with your Devise account</p>
-  <p>There are <%= User.count %> users in database</p>
-  <a class="btn btn-primary" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
-  <a class="btn btn-primary" <%= link_to 'Dashboard', users_admin_index_path %></a>
-  <a class="btn btn-primary" <%= link_to 'Create School', new_school_path %></a>
-
+  <% if current_user.role == "admin" %>
+    <p>There are <%= User.count %> users in database</p>
+    <a class="btn btn-primary" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
+    <a class="btn btn-primary" <%= link_to 'Dashboard', users_admin_index_path %></a>
+    <a class="btn btn-primary" <%= link_to 'Create School', new_school_path %></a>
+  <% elsif current_user.role == "teacher" %>
+    <a class="btn btn-primary" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
+    <a class="btn btn-primary" <%= link_to 'Dashboard', users_admin_index_path %></a>
+  <% else %>
+    <p>Student</p>
+    <a class="btn btn-primary" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
+  <% end %>
 <% else %>
   <p>You are not logged in.</p>
   <br/>

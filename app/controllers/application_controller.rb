@@ -3,6 +3,18 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+  after_action :check_subdomain
+
+  def check_subdomain
+    if current_user != nil
+      unless request.subdomain == current_user.domain
+        request.session_options[:skip] = true
+      end
+    end
+  end
+
+
   protected
 
   def configure_permitted_parameters
