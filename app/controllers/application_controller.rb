@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
 
-  after_action :check_subdomain
+  before_action :check_subdomain
 
   def check_subdomain
     if current_user != nil

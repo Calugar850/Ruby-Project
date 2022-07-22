@@ -1,0 +1,37 @@
+<%= form_for @course, method: :post, local: true do |form| %>
+
+  <div class="field form-group">
+    <% form.label :name %><br />
+    <%= form.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", placeholder:"Name" %>
+  </div>
+  <p></p>
+
+  <div class="field form-group">
+    <% form.label :description %><br />
+    <%= form.text_area :description, autofocus: true, autocomplete: "description", class:"form-control", placeholder:"Description" %>
+  </div>
+  <p></p>
+
+  <div style="display: none;">
+    <%= form.text_field :school_id, value: current_user.id_school %>
+  </div>
+
+  <div style="display: none;">
+    <%= form.text_field :teacher_id, value: current_user.id %>
+  </div>
+
+  <h6>Leave blank if you do not want to have an access key</h6>
+  <div class="field form-group">
+    <% form.label :acces_key %><br />
+    <%= form.text_field :acces_key, autofocus: true, autocomplete: "acces_key", class:"form-control", placeholder:"Access Key" %>
+  </div>
+  <p></p>
+
+  <div class="actions">
+    <%= form.submit 'Save Course', class:'btn btn-secondary', data: {turbo: false} %>
+  </div>
+
+<% end %>
+
+<p></p>
+<%= link_to "Back", :back, class: "btn btn-secondary" %>
