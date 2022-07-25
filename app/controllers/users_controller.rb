@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save(:validate=> false)
-      redirect_to users_admin_index_path
+      redirect_to root_path
     else
       render new_users_admin_path
     end

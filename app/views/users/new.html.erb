@@ -30,25 +30,33 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Password Confirmation" %>
   </div>
 
-  <br/>
 
-  <div style="display: none;">
-  <%= f.text_field :domain, value: current_user.domain %>
-  </div>
+  <% if current_user %>
 
-  <div style="display: none;">
-    <% @schools.each do |s| %>
-      <% if s.domain = current_user.domain %>
-        <%= f.text_field :id_school, value: s.id %>
+    <div style="display: none;">
+    <%= f.text_field :domain, value: current_user.domain %>
+    </div>
+
+    <div style="display: none;">
+      <% @schools.each do |s| %>
+        <% if s.domain == current_user.domain %>
+          <%= f.text_field :id_school, value: s.id %>
+        <% end %>
       <% end %>
-    <% end %>
 
-  </div>
+    </div>
 
-  <div class="field form-group">
-    <%= f.select :role, options_for_select(["student", "teacher"]), {}, { class:"form-control"} %>
-  </div>
-  <p></p>
+    <div class="field form-group">
+      <%= f.select :role, options_for_select(["student", "teacher"]), {}, { class:"form-control"} %>
+    </div>
+    <p></p>
+  <% else %>
+    <div class="field form-group">
+      <% f.label :domain %><br />
+      <%= f.text_field :domain, autofocus: true, autocomplete: "domain", class:"form-control", placeholder:"Introduce Domain For Institution" %>
+    </div>
+    <br/>
+  <% end %>
 
   <div class="actions">
     <%= f.submit 'Create User', class: "btn btn-secondary", data: {turbo: false} %>

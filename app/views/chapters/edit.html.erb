@@ -1,11 +1,11 @@
 <% if current_user.role == "teacher" %>
 <div class="card">
   <div class="card-header">
-    <h4>Edit Course</h4>
+    <h4>Edit Chapter</h4>
   </div>
   <div class="card-body">
 
-    <%= form_for @course, method: :patch, local: true do |form| %>
+    <%= form_for @chapter, method: :patch, local: true do |form| %>
 
       <div class="field form-group">
         <% form.label :name %><br />
@@ -19,20 +19,12 @@
       </div>
       <p></p>
 
-      <h6>Leave blank if you do not want to have an access key</h6>
-      <div class="field form-group">
-        <% form.label :acces_key %><br />
-        <%= form.text_field :acces_key, autofocus: true, autocomplete: "acces_key", class:"form-control", placeholder:"Access Key" %>
-      </div>
-      <p></p>
-
       <div class="actions">
         <%= form.submit "Update", class:'btn btn-secondary' %>
       </div>
     <% end %>
   </div>
 </div>
-
 <% end %>
 <p></p>
 <%= link_to "Back", :back, class: "btn btn-secondary" %>

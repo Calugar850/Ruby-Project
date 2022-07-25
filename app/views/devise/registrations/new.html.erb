@@ -38,9 +38,15 @@
   </div>
   <br/>
 
-  <!--<div>
-  <%#= f.text_field :role, :value => "student" %>
-  </div>-->
+  <div class="field form-group">
+    <% f.label :id_school %><br />
+    <%= f.text_field :id_school, autofocus: true, autocomplete: "id_school", class:"form-control", placeholder:"School ID" %>
+  </div>
+  <br/>
+
+  <div style="display: none;">
+  <%= f.text_field :role, value: "admin" %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Sign up", class: "btn btn-secondary", data: {turbo: false} %>

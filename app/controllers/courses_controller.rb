@@ -1,10 +1,17 @@
 class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
+    @chapters = Chapter.all
   end
 
   def index
     @course = Course.all
+  end
+
+  def all_courses
+    if current_user.role == "student"
+      @courses = Course.all
+    end
   end
 
   def new

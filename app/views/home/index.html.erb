@@ -8,7 +8,6 @@
   <p>The domain is: <%= current_user.domain %></p>
   <p>Successfully authenticated with your Devise account</p>
   <% if current_user.role == "admin" %>
-    <p>There are <%= User.count %> users in database</p>
     <a class="btn btn-primary" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
     <a class="btn btn-primary" <%= link_to 'Dashboard', users_admin_index_path %></a>
     <a class="btn btn-primary" <%= link_to 'Create School', new_school_path %></a>
@@ -18,12 +17,13 @@
   <% else %>
     <p>Student</p>
     <a class="btn btn-primary" <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
+    <a class="btn btn-info" <%= link_to "See all Courses", all_courses_url %></a>
   <% end %>
 <% else %>
   <p>You are not logged in.</p>
   <br/>
   <div>
-    <a class="btn btn-primary" <%= link_to "Register", new_user_registration_path %></a>
+    <a class="btn btn-primary" <%= link_to "Register", new_users_admin_path %></a>
     <a class="btn btn-primary" <%= link_to "Login", new_user_session_path%></a>
   </div>
 <% end %>

@@ -1,7 +1,5 @@
 <% if current_user.role == "teacher" %>
-
-<%= form_for @course, method: :post, local: true do |form| %>
-
+<%= form_for @chapter, method: :post, local: true do |form| %>
   <div class="field form-group">
     <% form.label :name %><br />
     <%= form.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", placeholder:"Name" %>
@@ -14,6 +12,12 @@
   </div>
   <p></p>
 
+    <div class="field form-group">
+      <% form.label :id_course %><br />
+      <%= form.text_field :id_course, autofocus: true, autocomplete: "id_course", class:"form-control", placeholder:"Course ID" %>
+    </div>
+    <p></p>
+
   <div style="display: none;">
     <%= form.text_field :school_id, value: current_user.id_school %>
   </div>
@@ -22,19 +26,10 @@
     <%= form.text_field :teacher_id, value: current_user.id %>
   </div>
 
-  <h6>Leave blank if you do not want to have an access key</h6>
-  <div class="field form-group">
-    <% form.label :acces_key %><br />
-    <%= form.text_field :acces_key, autofocus: true, autocomplete: "acces_key", class:"form-control", placeholder:"Access Key" %>
-  </div>
-  <p></p>
-
   <div class="actions">
-    <%= form.submit 'Save Course', class:'btn btn-secondary', data: {turbo: false} %>
+    <%= form.submit 'Save Chapter', class:'btn btn-secondary', data: {turbo: false} %>
   </div>
-
 <% end %>
-
 <% end %>
 <p></p>
 <%= link_to "Back", :back, class: "btn btn-secondary" %>

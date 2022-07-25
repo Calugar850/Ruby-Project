@@ -9,4 +9,18 @@
   </div>
 </div>
 <p></p>
+
+<% @chapters.each do |c| %>
+  <% if c.id_course == @course.id %>
+  <div class="card w-50">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to c.name, c %></h5>
+      <p class="card-text"><%= c.description %></p>
+      <a href="#" class="btn btn-primary">Button</a>
+    </div>
+  </div>
+  <p></p>
+    <% end %>
+<% end %>
+
 <%= link_to "Back", :back, class: "btn btn-secondary" %>

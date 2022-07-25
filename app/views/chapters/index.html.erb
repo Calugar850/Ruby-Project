@@ -1,10 +1,4 @@
 <% if current_user.role == "teacher" %>
-  <div>
-    <a class="btn btn-primary btn-lg" <%= link_to 'Create course', new_course_path %></a>
-    <a class="btn btn-primary btn-lg" <%= link_to 'Create chapter', new_chapter_path %></a>
-    <a class="btn btn-info btn-lg" <%= link_to 'All Chapters', chapters_path %></a>
-  </div>
-  <p></p>
 
   <div>
     <table class="table table-striped table-bordered table-hover">
@@ -15,20 +9,20 @@
         <th>Description</th>
         <th>School ID</th>
         <th>Teacher ID</th>
-        <th>Access Key</th>
+        <th>Course ID</th>
         <th>Edit</th>
       </tr>
       </thead>
       <tbody>
-      <% @course.each do |c| %>
+      <% @chapter.each do |c| %>
         <tr>
           <th><%= c.id %></th>
           <th><%= link_to c.name, c %></th>
           <th><%= c.description %></th>
           <th><%= c.school_id %></th>
           <th><%= c.teacher_id %></th>
-          <th><%= c.acces_key %></th>
-          <th><%= link_to 'Edit', edit_course_path(c) %></th>
+          <th><%= c.id_course %></th>
+          <th><%= link_to 'Edit', edit_chapter_path(c) %></th>
         </tr>
       <% end %>
       </tbody>
