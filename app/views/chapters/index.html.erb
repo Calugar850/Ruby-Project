@@ -10,20 +10,24 @@
         <th>School ID</th>
         <th>Teacher ID</th>
         <th>Course ID</th>
+        <th>Modified By ID</th>
         <th>Edit</th>
       </tr>
       </thead>
       <tbody>
       <% @chapter.each do |c| %>
-        <tr>
-          <th><%= c.id %></th>
-          <th><%= link_to c.name, c %></th>
-          <th><%= c.description %></th>
-          <th><%= c.school_id %></th>
-          <th><%= c.teacher_id %></th>
-          <th><%= c.id_course %></th>
-          <th><%= link_to 'Edit', edit_chapter_path(c) %></th>
-        </tr>
+        <% if current_user.id_school == c.school_id %>
+          <tr>
+            <th><%= c.id %></th>
+            <th><%= link_to c.name, c %></th>
+            <th><%= c.description %></th>
+            <th><%= c.school_id %></th>
+            <th><%= c.teacher_id %></th>
+            <th><%= c.id_course %></th>
+            <th><%= c.teacher_updated_id %></th>
+            <th><%= link_to 'Edit', edit_chapter_path(c) %></th>
+          </tr>
+        <% end %>
       <% end %>
       </tbody>
     </table>

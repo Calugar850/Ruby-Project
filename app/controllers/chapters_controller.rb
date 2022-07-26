@@ -36,6 +36,6 @@ class ChaptersController < ApplicationController
   private
 
   def chapter_params
-    params.require(:chapter).permit(:name, :description, :school_id, :teacher_id, :id_course)
+    params.require(:chapter).permit(:name, :description, :school_id, :teacher_id, :id_course, :teacher_updated_id)
   end
 end

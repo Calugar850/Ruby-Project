@@ -40,9 +40,31 @@ class CoursesController < ApplicationController
     end
   end
 
+
+  def new_chapter
+    @chapter = Chapter.new
+    @course = Course.find(params[:id])
+  end
+
+  def create_chapter
+    @chapter = Chapter.new(chapter_params)
+    if @chapter.save
+      puts "ASDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDd"
+      puts @chapter
+      redirect_to courses_path
+    else
+      render new_chapter_path
+    end
+  end
+
   private
 
   def course_params
     params.require(:course).permit(:name, :description, :school_id, :teacher_id, :acces_key)
   end
+
+  def chapter_params
+    params.require(:chapter).permit(:name, :description, :school_id, :teacher_id, :id_course, :teacher_updated_id)
+  end
+
 end

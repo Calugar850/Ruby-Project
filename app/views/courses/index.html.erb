@@ -1,7 +1,6 @@
 <% if current_user.role == "teacher" %>
   <div>
     <a class="btn btn-primary btn-lg" <%= link_to 'Create course', new_course_path %></a>
-    <a class="btn btn-primary btn-lg" <%= link_to 'Create chapter', new_chapter_path %></a>
     <a class="btn btn-info btn-lg" <%= link_to 'All Chapters', chapters_path %></a>
   </div>
   <p></p>
@@ -21,6 +20,7 @@
       </thead>
       <tbody>
       <% @course.each do |c| %>
+        <% if current_user.id_school == c.school_id %>
         <tr>
           <th><%= c.id %></th>
           <th><%= link_to c.name, c %></th>
@@ -30,6 +30,7 @@
           <th><%= c.acces_key %></th>
           <th><%= link_to 'Edit', edit_course_path(c) %></th>
         </tr>
+      <% end %>
       <% end %>
       </tbody>
     </table>

@@ -1,18 +1,62 @@
 <%= form_for @school, method: :post, local: true do |form| %>
-
+  <h5>Instution data</h5>
   <div class="field form-group">
     <% form.label :name %><br />
-    <%= form.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", placeholder:"Name" %>
+    <%= form.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", placeholder:"School Name" %>
   </div>
 
-  <p></p>
-  <div style="display: none;">
-    <%= form.text_field :domain, value: current_user.domain %>
+  <div class="field form-group">
+    <% form.label :domain %><br />
+    <%= form.text_field :domain, autofocus: true, autocomplete: "domain", class:"form-control", placeholder:"Introduce Domain For Institution" %>
   </div>
+  <br/>
 
-  <div class="actions">
-    <%= form.submit 'Save School', class:'btn btn-secondary', data: {turbo: false} %>
-  </div>
+  <%= form_for @user, url: users_admin_index_path(@user), method: :post, local: true do |f| %>
+
+    <h5>User Data</h5>
+    <div class="field form-group">
+      <% f.label :domain %><br />
+      <%= f.text_field :domain, autofocus: true, autocomplete: "domain", class:"form-control", placeholder:"Introduce Domain For Institution" %>
+    </div>
+
+
+    <div class="field form-group">
+      <% f.label :username %><br />
+      <%= f.text_field :username, autofocus: true, autocomplete: "username", class:"form-control", placeholder:"Username" %>
+    </div>
+
+    <div class="field form-group">
+      <% f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", placeholder:"Full Name" %>
+    </div>
+
+    <div class="field form-group">
+      <% f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"Email" %>
+    </div>
+
+    <div class="field form-group">
+      <% f.label :password %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"Password" %>
+    </div>
+
+    <div class="field form-group">
+      <% f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Password Confirmation" %>
+    </div>
+
+    <div style="display: none;">
+      <%= f.text_field :role, value: "admin" %>
+    </div>
+    <br/>
+
+    <div class="actions">
+      <%= form.submit 'Save', class:'btn btn-secondary', data: {turbo: false} %>
+    </div>
+  <% end %>
 
 <% end %>
 

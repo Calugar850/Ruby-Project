@@ -1,0 +1,37 @@
+<% if current_user.role == "teacher" %>
+  <%= form_for @chapter, method: :post, local: true do |form| %>
+    <div class="field form-group">
+      <% form.label :name %><br />
+      <%= form.text_field :name, autofocus: true, autocomplete: "name", class:"form-control", placeholder:"Name" %>
+    </div>
+    <p></p>
+
+    <div class="field form-group">
+      <% form.label :description %><br />
+      <%= form.text_area :description, autofocus: true, autocomplete: "description", class:"form-control", placeholder:"Description" %>
+    </div>
+    <p></p>
+
+    <div style="display: none;">
+      <%= form.text_field :id_course, value: @course.id %>
+    </div>
+
+    <div style="display: none;">
+      <%= form.text_field :school_id, value: current_user.id_school %>
+    </div>
+
+    <div style="display: none;">
+      <%= form.text_field :teacher_id, value: current_user.id %>
+    </div>
+
+    <div style="display: none;">
+      <%= form.text_field :teacher_updated_id, value: current_user.id %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Save Chapter', class:'btn btn-secondary', data: {turbo: false} %>
+    </div>
+  <% end %>
+<% end %>
+<p></p>
+<%= link_to "Back", :back, class: "btn btn-secondary" %>

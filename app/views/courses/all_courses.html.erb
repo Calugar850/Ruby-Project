@@ -1,13 +1,15 @@
 <% if current_user.role == "student" %>
 
   <% @courses.each do |c| %>
+    <% if current_user.id_school == c.school_id %>
     <div class="card w-50">
       <div class="card-body">
         <h5 class="card-title"><%= link_to c.name, c %></h5>
         <p class="card-text"><%= c.description %></p>
-        <a href="#" class="btn btn-primary">Button</a>
+        <a href="#" class="btn btn-primary">Enroll</a>
       </div>
     </div>
+      <% end %>
   <% end %>
 
 <% end %>

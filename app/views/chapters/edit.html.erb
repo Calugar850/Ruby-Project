@@ -19,6 +19,10 @@
       </div>
       <p></p>
 
+      <div style="display: none;">
+        <%= form.text_field :teacher_updated_id, value: current_user.id %>
+      </div>
+
       <div class="actions">
         <%= form.submit "Update", class:'btn btn-secondary' %>
       </div>

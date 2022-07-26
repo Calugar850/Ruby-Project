@@ -12,12 +12,21 @@ Rails.application.routes.draw do
     resources :users_admin, :controller => 'users'
     get '/dashboard', to: 'users#index'
     get '/all_courses', to: 'courses#all_courses'
+    get '/courses/:id/new_chapter', to: 'courses#new_chapter'
   end
 
   constraints subdomain: 'ubb' do
     resources :users_admin, :controller => 'users'
     get '/dashboard', to: 'users#index'
     get '/all_courses', to: 'courses#all_courses'
+    get '/courses/:id/new_chapter', to: 'courses#new_chapter'
+  end
+
+  constraints subdomain: 'umf' do
+    resources :users_admin, :controller => 'users'
+    get '/dashboard', to: 'users#index'
+    get '/all_courses', to: 'courses#all_courses'
+    get '/courses/:id/new_chapter', to: 'courses#new_chapter'
   end
 
 end

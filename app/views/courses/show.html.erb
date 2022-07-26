@@ -10,6 +10,12 @@
 </div>
 <p></p>
 
+<% if current_user.role == "teacher" %>
+  <a class="btn btn-primary btn-lg" <%= link_to 'Create chapter', "/courses/"+@course.id.to_s+"/new_chapter" %></a>
+  <%=  %>
+  <p></p>
+<% end %>
+
 <% @chapters.each do |c| %>
   <% if c.id_course == @course.id %>
   <div class="card w-50">
