@@ -10,6 +10,7 @@ class CoursesController < ApplicationController
 
   def all_courses
     if current_user.role == "student"
+      @enroll
       @courses = Course.all
     end
   end
@@ -49,8 +50,6 @@ class CoursesController < ApplicationController
   def create_chapter
     @chapter = Chapter.new(chapter_params)
     if @chapter.save
-      puts "ASDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDd"
-      puts @chapter
       redirect_to courses_path
     else
       render new_chapter_path

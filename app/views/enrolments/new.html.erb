@@ -1,0 +1,38 @@
+<% if @course.acces_key != "" %>
+  <br/>
+  <h5>Introduce Access Key for this Course</h5> <br/>
+  <%= form_for @enroll, method: :post, local: true do |form| %>
+    <div class="field form-group">
+      <%= form.password_field :key, autofocus: true, autocomplete: "key", class:"form-control", placeholder:"Access Key" %>
+    </div>
+    <br/>
+
+    <div style="display: none;">
+      <%= form.text_field :student_id, value: current_user.id %>
+    </div>
+
+    <div style="display: none;">
+      <%= form.text_field :course_id, value: @course.id %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Enroll', class:'btn btn-secondary', data: {turbo: false} %>
+    </div>
+  <% end %>
+  <br/>
+<% else %>
+  <%= form_for @enroll, method: :post, local: true do |form| %>
+
+    <div style="display: none;">
+      <%= form.text_field :student_id, value: current_user.id %>
+    </div>
+
+    <div style="display: none;">
+      <%= form.text_field :course_id, value: @course.id %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Enroll', class:'btn btn-secondary', data: {turbo: false} %>
+    </div>
+  <% end %>
+<% end %>

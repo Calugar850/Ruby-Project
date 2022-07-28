@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :school
-  has_many :courses
+  has_many :enrolments
+  has_many :courses, through: :enrolments
 
   enum role: [:student, :teacher, :admin]
   after_initialize :set_default_role, :if => :new_record?
